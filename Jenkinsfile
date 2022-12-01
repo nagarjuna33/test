@@ -1,7 +1,7 @@
 pipeline {
     agent { label 'springpet' }
     stages{
-      stage('build') {
+      stage('url') {
          steps{
                 git url: 'https://github.com/nagarjuna33/test.git', branch: 'master'
             }
