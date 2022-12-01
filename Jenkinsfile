@@ -2,8 +2,8 @@ pipeline {
     agent { label 'springpet' }
     //triggers { pollSCM('H * * * 1-5') }
         stages {
-        stage('build') {
-            steps{
+           stage('build') {
+                steps{
                 git url: 'https://github.com/nagarjuna33/test.git', branch: 'master'
             }
         }
