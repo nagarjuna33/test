@@ -1,7 +1,5 @@
 FROM maven:3-openjdk-11 as builder
-RUN mkdir /spring-petclinic
-COPY /spring-petclinic /spring-petclinic
-RUN cd spring-petclinic && mvn package
+RUN git clone https://github.com/spring-projects/spring-petclinic.git && cd spring-petclinic && mvn package
 
 FROM openjdk:11
 LABEL author="Arjun"
