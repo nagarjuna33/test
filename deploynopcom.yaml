@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nopcom-deploy
+spec:
+  minReadySeconds: 10
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nopcom
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      name: nopcom-pod
+      labels:
+        app: nopcom
+        version: "2.0"
+    spec:
+      containers:
+        - name: nopcom
+          image: nagarjunaduggireddy/nopcom:2.0
+          ports:
+            - containerPort: 80
+              protocol: TCP
